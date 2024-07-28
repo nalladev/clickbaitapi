@@ -2,7 +2,7 @@ const axios = require("axios");
 
 const selfPing = () => {
   axios
-    .get(`https://vjcet.onrender.com/`)
+    .get(`https://clickbaitapi.onrender.com/`)
     .then((res) => console.log(res.status, res.statusText))
     .catch((error) => {
       if (error.response)
