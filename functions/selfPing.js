@@ -3,7 +3,7 @@ const axios = require("axios");
 const selfPing = () => {
   axios
     .get(`https://clickbaitapi.onrender.com/`)
-    .then((res) => console.log(res.status, res.statusText))
+    .then((res) => console.log("Self Ping: ", res.status, res.statusText))
     .catch((error) => {
       if (error.response)
         console.log("Error Self Ping", error.response.statusText);
