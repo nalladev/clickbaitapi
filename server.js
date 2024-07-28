@@ -4,9 +4,12 @@ require("dotenv").config();
 const selfPing = require("./functions/selfPing");
 const getReport = require("./functions/getReport");
 const createReport = require("./functions/createReport");
+const initDB = require("./functions/initDB");
 
-const port = process.env.PORT || 4000;
-app.listen(port, () => console.log(`Server ready on port ${port}.`));
+const port = process.env.PORT || 3000;
+initDB().then(() => {
+  app.listen(port, () => console.log(`Server ready on port ${port}.`));
+});
 
 app.get("/", async (req, res) => {
   res.send("routes: /reports/{id}");
