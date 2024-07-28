@@ -1,15 +1,19 @@
 const express = require("express");
 const cors = require('cors');
 require("dotenv").config();
+const initDB = require("./functions/initDB");
 const selfPing = require("./functions/selfPing");
 const getReport = require("./functions/getReport");
+const getReports = require("./functions/getReports");
 const createReport = require("./functions/createReport");
-const initDB = require("./functions/initDB");
 
 const app = express();
 app.use(cors({ origin: 'https://www.youtube.com' }));
+app.use(express.json());
 
 const port = process.env.PORT || 3000;
+
+
 //initialising mongodb
 initDB().then(() => {
   //starting server
@@ -28,6 +32,11 @@ app.get("/reports/:id", async (req, res) => {
 app.post("/reports/:id", async (req, res) => {
   res.json(await createReport(req.params.id));
 });
+
+app.get("/reports/multiple", async (req, res) => {
+  res.json(await getReports(req.body.videoIds));
+});
+
 //self pinging service to keep active
 setInterval(selfPing, 1000 * 60 * 14);
 
