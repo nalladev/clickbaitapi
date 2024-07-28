@@ -33,7 +33,7 @@ app.post("/reports/:id", async (req, res) => {
   res.json(await createReport(req.params.id));
 });
 
-app.get("/reports/multiple", async (req, res) => {
+app.post("/reports/multiple", async (req, res) => {
   res.json(await getReports(req.body.videoIds));
 });
 
