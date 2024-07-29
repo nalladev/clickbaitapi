@@ -1,1 +1,1 @@
-# clickbait-backend
+# clickbaitapi
