@@ -1,6 +1,6 @@
-const Report = require("../schemas/report");
+import Report from "../schemas/report.js";
 
-async function createReport(id) {
+export default async function createReport(id) {
   try {
     const query = { id };
     const update = { $inc: { count: 1 } };
@@ -11,5 +11,3 @@ async function createReport(id) {
     console.log("Error: ", error);
   }
 }
-
-module.exports = createReport;

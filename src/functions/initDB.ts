@@ -1,7 +1,9 @@
-const mongoose = require("mongoose");
-require("dotenv").config();
+import mongoose from "mongoose";
+import dotenv from "dotenv"
 
-async function initDB() {
+dotenv.config()
+
+export default async function initDB() {
   try {
     await mongoose.connect(process.env.MONGODBURI);
     console.log("Database successfully connected.");
@@ -9,5 +11,3 @@ async function initDB() {
     console.error(error);
   }
 }
-
-module.exports = initDB;

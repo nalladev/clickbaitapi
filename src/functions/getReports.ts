@@ -1,6 +1,6 @@
-const Report = require("../schemas/report");
+import Report from "../schemas/report.js";
 
-async function getReports(videoIds) {
+export default async function getReports(videoIds) {
   try {
     const reports = await Report.find({ id: { $in: videoIds } });
     return reports;
@@ -8,5 +8,3 @@ async function getReports(videoIds) {
     console.log("Error: ", error);
   }
 }
-
-module.exports = getReports;

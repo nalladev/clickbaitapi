@@ -1,8 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const reportSchema = new mongoose.Schema({
   id: String,
   count: { type: Number, default: 0 },
 });
 
-module.exports = mongoose.model("Report", reportSchema);
+export default mongoose.model("Report", reportSchema);

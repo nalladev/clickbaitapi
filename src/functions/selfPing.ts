@@ -1,6 +1,6 @@
-const axios = require("axios");
+import axios from "axios";
 
-const selfPing = () => {
+export default function selfPing() {
   axios
     .get(`https://clickbaitapi.onrender.com/`)
     .then((res) => console.log("Self Ping: ", res.status, res.statusText))
@@ -12,5 +12,3 @@ const selfPing = () => {
       else console.log("Error Self Ping: ", error.message);
     });
 };
-
-module.exports = selfPing;

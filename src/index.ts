@@ -1,14 +1,16 @@
-const express = require("express");
-const cors = require("cors");
-require("dotenv").config();
-const initDB = require("./functions/initDB");
-const selfPing = require("./functions/selfPing");
-const getReport = require("./functions/getReport");
-const getReports = require("./functions/getReports");
-const createReport = require("./functions/createReport");
+import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import initDB from "./functions/initDB.js";
+import selfPing from "./functions/selfPing.js";
+import getReport from "./functions/getReport.js";
+import getReports from "./functions/getReports.js";
+import createReport from "./functions/createReport.js";
+
+dotenv.config()
 
 const app = express();
-app.use(cors({ origin: 'https://www.youtube.com' }));
+app.use(cors({ origin: "https://www.youtube.com" }));
 app.use(express.json());
 
 const port = process.env.PORT || 3000;
@@ -39,4 +41,4 @@ app.post("/reports/:id", async (req, res) => {
 //self pinging service to keep active
 setInterval(selfPing, 1000 * 60 * 14);
 
-module.exports = app;
+export default app;

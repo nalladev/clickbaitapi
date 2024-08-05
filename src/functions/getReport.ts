@@ -1,6 +1,6 @@
-const Report = require("../schemas/report");
+import Report from "../schemas/report.js";
 
-async function getReport(id) {
+export default async function getReport(id) {
   try {
     const report = await Report.findOne({ id });
     return report || { id, count: 0 };
@@ -8,5 +8,3 @@ async function getReport(id) {
     console.log("Error: ", error);
   }
 }
-
-module.exports = getReport;
