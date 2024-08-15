@@ -1,24 +1,24 @@
 import express from "express";
-import cors from "cors";
+// import cors from "cors";
 import dotenv from "dotenv";
-import initDB from "./functions/initDB.js";
 import selfPing from "./functions/selfPing.js";
 import getReport from "./functions/getReport.js";
 import getReports from "./functions/getReports.js";
 import createReport from "./functions/createReport.js";
+import { connectDB } from "./db/connection.js";
 
-dotenv.config()
+dotenv.config(); 
 
 const app = express();
-app.use(cors({ origin: "https://www.youtube.com" }));
+
+// app.use(cors({ origin: "https://www.youtube.com" }));
 app.use(express.json());
 
 const port = process.env.PORT || 3000;
 
 //initialising mongodb
-initDB().then(() => {
-  //starting server
-  app.listen(port, () => console.log(`Server ready on port ${port}.`));
+connectDB().then(() => {
+  app.listen(port, () => console.log(`Server started on port ${port}.`));
 });
 
 //routes
